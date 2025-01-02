@@ -1,0 +1,8 @@
+# 3DS gamepad remote playback
+
+Capture and playback gamepad inputs
+
+Use modded 3ds input redirection for recording and playback
+Use controller emulator to record inputs from keyboard
+
+Not all buttons are implemented, just basic ABXY, dpad and joysticks
