@@ -1,6 +1,7 @@
 
 import time
 import vgamepad as vg
+from floppyconfig import internalCodeToVgamepadMap
 
 gamepad = vg.VX360Gamepad()
 joystickLeft = {
@@ -25,7 +26,7 @@ def setup():
     gamepad.update()
     time.sleep(0.1)
 
-def inputToVgamepad(key, value):
+def controllerInputToVgamepad(key, value):
     match key:
         case "BTN_SOUTH":
             _updateButton(vg.XUSB_BUTTON.XUSB_GAMEPAD_A, value)
@@ -53,6 +54,12 @@ def inputToVgamepad(key, value):
             gamepad.update()
         case _:
             print("Unknown key: " + key)
+
+def internalInputToVgamepad(key, value):
+    if (key in internalCodeToVgamepadMap):
+        # print(f"{key} -> {value}"4662284)
+        _updateButton(internalCodeToVgamepadMap[key], value)
+        gamepad.update()
 
 def _updateButton(button, value):
     if (value == 1):
